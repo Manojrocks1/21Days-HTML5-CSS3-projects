@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character set declaration for proper display of characters -->
+    <meta charset="UTF-8" />
+    <!-- Viewport meta tag for responsive design, ensuring proper scaling on all devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Title of the web page, displayed in the browser tab -->
+    <title>Quiz App</title>
+    <!-- Link to Tailwind CSS CDN for utility-first styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<!-- Body element with Tailwind classes for background color, centering content, and minimum height -->
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+
+    <!-- Main quiz container div -->
+    <!-- Tailwind classes for white background, padding, rounded corners, shadow, full width on small screens, and max-width on larger screens -->
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-xl" id="quiz">
+        <!-- Question display area -->
+        <!-- Tailwind classes for text size, font weight, margin-bottom, text alignment, and initial text -->
+        <h2 class="text-2xl font-semibold mb-6 text-center" id="question">Loading...</h2>
+
+        <!-- Container for answer options -->
+        <!-- Tailwind class for vertical spacing between child elements -->
+        <div class="space-y-4" id="options">
+            <!-- Label for Option A -->
+            <!-- Tailwind classes for flex display, item alignment, and horizontal spacing -->
+            <label class="flex items-center space-x-2">
+                <!-- Radio input for Option A -->
+                <!-- 'name="answer"' groups all radio buttons so only one can be selected -->
+                <!-- 'class="answer"' is used by JavaScript to select all answer inputs -->
+                <input type="radio" name="answer" class="answer" id="a" />
+                <!-- Span to display Option A's text -->
+                <span id="a_text" class="text-gray-700">Option A</span>
+            </label>
+            <!-- Label for Option B -->
+            <label class="flex items-center space-x-2">
+                <input type="radio" name="answer" class="answer" id="b" />
+                <span id="b_text" class="text-gray-700">Option B</span>
+            </label>
+            <!-- Label for Option C -->
+            <label class="flex items-center space-x-2">
+                <input type="radio" name="answer" class="answer" id="c" />
+                <span id="c_text" class="text-gray-700">Option C</span>
+            </label>
+            <!-- Label for Option D -->
+            <label class="flex items-center space-x-2">
+                <input type="radio" name="answer" class="answer" id="d" />
+                <span id="d_text" class="text-gray-700">Option D</span>
+            </label>
+        </div>
+
+        <!-- Submit button -->
+        <!-- Tailwind classes for top margin, full width, background color, text color, padding, rounded corners, and hover effects -->
+        <button id="submit" class="mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+            Submit
+        </button>
+    </div>
+
+    <!-- Link to the JavaScript file. Placed at the end of the body for better performance,
+         ensuring HTML content is loaded before script tries to access it. -->
+    <script src="Quiz.js"></script>
+</body>
+</html>
+
+Quiz.js:
+     // quizData: An array of objects, where each object represents a single quiz question.
+// Each question object contains:
+// - question: The text of the question.
+// - a, b, c, d: The text for each multiple-choice option.
+// - correct: The ID of the correct answer option (e.g., "a", "b").
+const quizData = [
+    {
+        question: "What does HTML stand for?",
+        a: "Hyper Text Markdown Language",
+        b: "Hyper Text Markup Language",
+        c: "Home Tool Markup Language",
+        d: "Hyperlinks and Text Markup Language",
+        correct: "b" // 'b' corresponds to the correct answer "Hyper Text Markup Language"
+    },
+    {
+        question: "What does CSS stand for?",
+        a: "Computer Style Sheets",
+        b: "Creative Style Sheets",
+        c: "Cascading Style Sheets",
+        d: "Colorful Style Sheets",
+        correct: "c" // 'c' corresponds to the correct answer "Cascading Style Sheets"
+    },
+    {
+        question: "Inside which HTML element do we put the JavaScript?",
+        a: "<js>",
+        b: "<script>",
+        c: "<javascript>",
+        d: "<code>",
+        correct: "b" // 'b' corresponds to the correct answer "<script>"
+    }
+];
+
+// currentQuiz: Keeps track of the index of the current question being displayed.
+// It starts at 0, representing the first question in the quizData array.
+let currentQuiz = 0;
+
+// score: Stores the number of questions the user has answered correctly.
+// It starts at 0 and increments with each correct answer.
+let score = 0;
+
+// Get references to DOM elements:
+// These variables connect the JavaScript code to specific HTML elements using their IDs or classes.
+const questionEl = document.getElementById("question"); // The H2 element where the question text is displayed.
+const answerEls = document.querySelectorAll(".answer"); // A NodeList of all input radio elements with the class 'answer'.
+const a_text = document.getElementById("a_text");     // Span element for option A's text.
+const b_text = document.getElementById("b_text");     // Span element for option B's text.
+const c_text = document.getElementById("c_text");     // Span element for option C's text.
+const d_text = document.getElementById("d_text");     // Span element for option D's text.
+const submitBtn = document.getElementById("submit");  // The button to submit the answer.
+const quiz = document.getElementById("quiz");         // The main quiz container div.
+
+// loadQuiz(): Function to load a new question and its options into the quiz interface.
+function loadQuiz() {
+    // First, ensure no answer is pre-selected from the previous question.
+    deselectAnswers();
+
+    // Get the data for the current question from the quizData array.
+    const currentQuizData = quizData[currentQuiz];
+
+    // Update the question text in the HTML.
+    questionEl.innerText = currentQuizData.question;
+
+    // Update the text content for each answer option in the HTML.
+    a_text.innerText = currentQuizData.a;
+    b_text.innerText = currentQuizData.b;
+    c_text.innerText = currentQuizData.c;
+    d_text.innerText = currentQuizData.d;
+}
+
+// deselectAnswers(): Function to uncheck all radio buttons.
+// This is called before loading a new question to clear previous selections.
+function deselectAnswers() {
+    // Iterate over each radio button element.
+    answerEls.forEach((el) => {
+        // Set the 'checked' property of each radio button to false.
+        el.checked = false;
+    });
+}
+
+// getSelected(): Function to determine which answer option (if any) is currently selected.
+// It returns the 'id' of the selected radio button.
+function getSelected() {
+    let answer; // Variable to store the ID of the selected answer.
+
+    // Iterate over each radio button element.
+    answerEls.forEach((el) => {
+        // If the current radio button is checked (selected by the user).
+        if (el.checked) {
+            // Store its ID. The IDs are 'a', 'b', 'c', 'd', matching the 'correct' property in quizData.
+            answer = el.id;
+        }
+    });
+    return answer; // Return the ID of the selected answer, or undefined if none is selected.
+}
+
+// Event Listener for the Submit Button:
+// This function runs every time the "Submit" button is clicked.
+submitBtn.addEventListener("click", () => {
+    // Get the ID of the answer selected by the user.
+    const answer = getSelected();
+
+    // Check if an answer was actually selected before proceeding.
+    if (answer) {
+        // If the selected answer matches the correct answer for the current question,
+        // increment the user's score.
+        if (answer === quizData[currentQuiz].correct) {
+            score++;
+        }
+
+        // Move to the next question in the quizData array.
+        currentQuiz++;
+
+        // Check if there are more questions remaining in the quiz.
+        if (currentQuiz < quizData.length) {
+            // If yes, load the next question.
+            loadQuiz();
+        } else {
+            // If no more questions, the quiz is finished.
+            // Display the final score to the user by updating the innerHTML of the quiz container.
+            // Also, provide a "Reload" button to restart the quiz.
+            quiz.innerHTML = `
+                <h2 class="text-2xl font-semibold mb-6 text-center">You scored ${score}/${quizData.length} questions correctly! ✅</h2>
+                <button onclick="location.reload()" class="mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">Reload</button>
+            `;
+        }
+    }
+    // No 'else' block here for not selecting an answer, but in a real application,
+    // you might want to add a visual cue or message to the user if they try to submit without selecting.
+});
+
+// Initial call to loadQuiz():
+// This function is called once when the script first loads to display the very first question.
+loadQuiz();

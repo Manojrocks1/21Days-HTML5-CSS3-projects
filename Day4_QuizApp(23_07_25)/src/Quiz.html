@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+
+  <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-xl" id="quiz">
+    <h2 class="text-2xl font-semibold mb-6 text-center" id="question">Loading...</h2>
+
+    <div class="space-y-4" id="options">
+      <label class="flex items-center space-x-2">
+        <input type="radio" name="answer" class="answer" id="a" />
+        <span id="a_text" class="text-gray-700">Option A</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="radio" name="answer" class="answer" id="b" />
+        <span id="b_text" class="text-gray-700">Option B</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="radio" name="answer" class="answer" id="c" />
+        <span id="c_text" class="text-gray-700">Option C</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="radio" name="answer" class="answer" id="d" />
+        <span id="d_text" class="text-gray-700">Option D</span>
+      </label>
+    </div>
+
+    <button id="submit" class="mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+      Submit
+    </button>
+  </div>
+
+  <script src="Quiz.js"></script>
+</body>
+</html>
