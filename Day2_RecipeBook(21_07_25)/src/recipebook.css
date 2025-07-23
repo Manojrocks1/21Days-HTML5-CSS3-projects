@@ -1,0 +1,54 @@
+/* Base layout */
+body {
+    font-family: 'Trebuchet MS', sans-serif;
+    background: #f3f4f3;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styling */
+header {
+    background: #ff2378;
+    padding: 1rem;
+    color: antiquewhite;
+    text-align: center;
+}
+
+/* Search input box */
+#searchInput {
+    padding: 0.7rem;
+    margin-top: 1.3rem;
+    width: 70%;
+    border: none;
+    border-radius: 6px;
+}
+
+/* Grid layout for recipe cards */
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive */
+    gap: 1rem;
+    padding: 2rem;
+}
+
+/* Recipe card styling */
+.card {
+    background-color: gray;
+    padding: 1rem;
+    border-radius: 14px;
+    box-shadow: 0 2px 5px rgba(123, 255, 46, 0.6); /* Fixed shadow syntax */
+    transition: transform 0.5s;
+}
+
+.card:hover {
+    transform: scale(1.07); /* Zoom on hover */
+}
+
+.card img {
+    width: 100%;
+    border-radius: 14px;
+}
+
+.card h2 {
+    font-size: 1.6rem;
+}
