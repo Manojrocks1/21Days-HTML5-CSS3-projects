@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 21Days-HTML5-CSS3-projects
 This repository contains a series of 21 progressively complex web development projects using HTML and CSS.
 
@@ -100,4 +99,3 @@ Stay tuned for Day 4: Quiz App and more interactive features coming soon!
 ---
 
 Happy Coding! 🚀
->>>>>>> 0260763 (Updated README)
