@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <!-- Import Tailwind CSS from CDN for fast styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 min-h-screen flex items-center justify-center">
+    <!-- Container for the form, centered and styled with Tailwind classes -->
+    <div class="bg-white shadow-xl rounded-xl p-9 w-full max-w-lg">
+        <!-- Form title -->
+        <h2 class="text-3xl font-bold mb-6 text-center text-blue-800">📩 Contact Us</h2>
+
+        <!-- Contact form begins here -->
+        <form id="contactForm">
+            <!-- Name field -->
+            <div>
+                <label for="name" class="block font-medium text-gray-700">Name:</label>
+                <input
+                    type="text"
+                    id="name"
+                    class="w-full mt-1 px-5 py-2 border rounded-md focus:ring-2 focus:ring-yellow-500"
+                    required
+                >
+            </div>
+
+            <!-- Email field -->
+            <div>
+                <label for="email" class="block font-medium text-gray-700">Email:</label>
+                <input
+                    type="email"
+                    id="email"
+                    class="w-full mt-1 px-5 py-2 border rounded-md focus:ring-2 focus:ring-yellow-500"
+                    required
+                >
+            </div>
+
+            <!-- Message textarea field -->
+            <div>
+                <label for="message" class="block font-medium text-gray-700">Message:</label>
+                <textarea
+                    id="message"
+                    rows="5"
+                    class="w-full mt-1 px-5 py-2 border rounded-md focus:ring-2 focus:ring-yellow-500"
+                    required
+                ></textarea>
+            </div>
+
+            <!-- Submit button -->
+            <button
+                type="submit"
+                class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition mt-4"
+            >Send Message</button>
+        </form>
+
+        <!-- Status message, hidden by default, shown after form submission in JS -->
+        <p
+            id="status"
+            class="text-center mt-6 font-medium text-green-800 hidden"
+        >✔️ Message sent successfully!</p>
+    </div>
+
+    <!-- Link to external JavaScript file handling form logic -->
+    <script src="Contact.js"></script>
+</body>
+</html>
+Key Comments and Improvements:
+
+Accessibility: Added for attributes to <label> tags.
+
+Typo fixed: reqired corrected to required in the email input.
+
+Color classes: Used Tailwind's class bg-white (assumed your intent as bg-dark is not a standard Tailwind class, you can adjust it if you have a custom color).
+
+Status message: Corrected its class and spelling (tex-green-800 to text-green-800) for proper green coloring.
+
+Spacings and readability: Added some margin and vertical spacing (mt-4 for button, etc.).
+
+Structure: Added comments at key points to explain each section.
+
+Input types: Used type="email" for the email input for built-in browser validation.
+
+const form = document.getElementById("contactForm");
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const messageInput = document.getElementById("message");
+const status = document.getElementById("status");
+const submitBtn = form.querySelector('button[type="submit"]');
+
+// Email validation function (simple regex)
+function isValidEmail(email) {
+    // Basic regex for demonstration, can be improved for stricter validation
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// Handle the form submit event
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Grab and trim input values
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const message = messageInput.value.trim();
+
+    // Simple validation for empty fields
+    if (!name || !email || !message) {
+        status.classList.remove("hidden");
+        status.textContent = "⚠️ Please fill in all fields.";
+        status.style.color = "red";
+        hideStatusAfterDelay();
+        return;
+    }
+    // Email format validation
+    if (!isValidEmail(email)) {
+        status.classList.remove("hidden");
+        status.textContent = "⚠️ Please enter a valid email address.";
+        status.style.color = "red";
+        hideStatusAfterDelay();
+        return;
+    }
+
+    // Simulate submission: Show success message
+    status.classList.remove("hidden");
+    status.textContent = "✔️ Message sent successfully!";
+    status.style.color = "green";
+
+    // Optionally, disable the button to prevent multiple submissions
+    submitBtn.disabled = true;
+
+    // Reset the form after a short delay
+    setTimeout(() => {
+        form.reset();
+        submitBtn.disabled = false;
+        hideStatusAfterDelay();
+    }, 1000);
+});
+
+// Hide the status message after a few seconds
+function hideStatusAfterDelay() {
+    setTimeout(() => {
+        status.classList.add("hidden");
+        status.textContent = "";
+    }, 1000);
+}
+What’s changed and why?
+
+Validation: Now checks for valid email format.
+
+Status Messages: Status message color changes for error/success.
+->Status auto-hides after a few seconds.
+
+Prevent Double Submits: Submit button is disabled on submit and re-enabled after reset.
+
+Refactoring: Elements are stored up front for convenience, and code is commented for clarity.
+

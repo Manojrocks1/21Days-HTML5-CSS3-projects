@@ -100,4 +100,7 @@ Stay tuned for Day 4: Quiz App and more interactive features coming soon!
 ---
 
 Happy Coding! 🚀
+<<<<<<< HEAD
 >>>>>>> 0260763 (Updated README)
+=======
+>>>>>>> 9fd66e35e779d68ac24fa6bc6b51baa1aa25a709
