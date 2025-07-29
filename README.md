@@ -1,36 +1,3 @@
-<<<<<<< HEAD
-# 21Days-HTML5-CSS3-projects
-This repository contains a series of 21 progressively complex web development projects using HTML and CSS.
-
-📅 Day-Wise Projects
-📁 Day 1: Personal Website
-A beginner-friendly static website using HTML and CSS that introduces the user with basic sections:
-
-HTML5 semantic layout (Header, About, Contact)
-
-CSS styling with hover and responsive effects
-
-Footer included
-
-Perfect for understanding page structure and custom styling.
-
-📁 Day 2: Recipe Book
-An interactive recipe book built using HTML, CSS, and JavaScript:
-
-Allows users to add and view recipes.
-
-Recipes stored in browser using localStorage
-
-JavaScript used for:
-
-Capturing user input
-
-Dynamically updating DOM
-
-Saving and retrieving data from localStorage
-
-Responsive design using CSS.
-=======
 
 # 21-Day Web Development Project Series
 
@@ -42,65 +9,94 @@ Welcome to the 21-Day Web Development Challenge! This repository includes daily 
 
 ### 📁 Day 1: Personal Website
 
-- **Tech Used**: HTML, CSS
+- **Tech Used**: HTML5, CSS3
 - **Highlights**:
-  - Clean and centered hero section
-  - Bio, contact links, and basic design
-- **Skills Practiced**:
-  - Structuring HTML
-  - Using CSS for layout and design
+  - Clean hero section with profile image
+  - Simple structure using semantic tags
+  - Responsive layout with custom styling
 
 ### 📁 Day 2: Recipe Book
 
-- **Tech Used**: HTML, CSS, JavaScript, localStorage
+- **Tech Used**: HTML5, CSS3, JavaScript
 - **Highlights**:
-  - List of recipes with heart icons to favorite
-  - Recipes saved using localStorage
-  - Responsive card layout
-- **Skills Practiced**:
-  - JavaScript DOM manipulation
-  - Event handling and localStorage usage
+  - Recipe cards with images
+  - Search filter using JS input event
+  - Responsive grid layout and CSS transitions
 
 ### 📁 Day 3: Portfolio Gallery
 
-- **Tech Used**: HTML, CSS, JavaScript (Lightbox)
+- **Tech Used**: HTML5, CSS3, JavaScript
 - **Highlights**:
-  - Image grid with project titles
-  - Lightbox effect to enlarge images
-  - Responsive design
+  - Image gallery with titles
+  - Lightbox image preview
+  - Flexbox & grid layout for responsiveness
+
+### 📁 Day 4: Quiz App
+
+- **Tech Used**: HTML5, Tailwind CSS, JavaScript
+- **Features**:
+  - Multiple choice quiz system
+  - Timer ⏱ (auto moves to next on timeout)
+  - Progress bar 📊 showing quiz completion
+  - Next/Back buttons 🔁 for navigation
+  - Score calculation and reload option
+
 - **Skills Practiced**:
-  - CSS Grid and Flexbox
-  - JavaScript for interactivity and modals
-  - Mobile responsiveness
+  - DOM manipulation & event handling
+  - Tailwind CSS utility-first design
+  - State management in vanilla JS
+
+### 📁 Day 5: Contact Form
+
+- **Tech Used**: HTML5, Tailwind CSS, JavaScript
+- **Features**:
+  - Name, email, and message fields
+  - Tailwind CSS for styling and responsiveness
+  - Basic validation and success message
+  - Clean UI for user interaction
+
+- **Skills Practiced**:
+  - Form validation using HTML and JavaScript
+  - Tailwind layout and styling utilities
+  - Real-world form interaction and user feedback
+
+### 📁 Day 6: CSS Styling
+
+- **Tech Used**: HTML5, CSS3
+- **Features**:
+  - Gradient backgrounds and visual depth
+  - Responsive spacing, border-radius, and shadows
+  - Smooth hover effects with transitions
+  - Styled buttons, layout, and typography
+  - Polished UI for readability and interaction
+
+- **Skills Practiced**:
+  - Customizing UI components
+  - Working with box-shadow and transform
+  - Using linear-gradient for backgrounds
+  - Improving UI/UX using consistent spacing and fonts
 
 ---
 
-## 📌 Upcoming Projects
+## 💬 Interview Questions Inspired by Day 6
 
-Stay tuned for Day 4: Quiz App and more interactive features coming soon!
+1. What is the difference between `margin` and `padding`?
+2. How does `box-shadow` enhance UI elements visually?
+3. What are the benefits of using `transition` in interactive designs?
+4. What is the purpose of `transform: scale()` in CSS?
+5. How do you implement a responsive layout using grid or flexbox?
+6. What is the default `box-sizing` value and how does `border-box` differ?
+7. How do you apply a gradient background in CSS?
+8. What is the importance of consistent font and spacing in web design?
 
 ---
 
-## 🎯 How to Use
+## 🧭 How to Use
 
-1. Clone the repo or download ZIP.
-2. Navigate into each project folder.
-3. Open `index.html` in browser.
-
----
-
-## 💡 Interview Questions Inspired by Day 3: Portfolio Gallery
-
-1. How does the `lightbox` functionality work using JavaScript?
-2. What’s the difference between `flex` and `grid` layout?
-3. How can you ensure responsiveness in an image gallery?
-4. Explain the event delegation concept in JavaScript.
-5. How do you optimize images for fast loading in galleries?
+1. Clone the repo or download as ZIP.
+2. Open individual folders (`Day1`, `Day2`, etc.).
+3. Launch `index.html` or relevant HTML file in your browser.
 
 ---
 
 Happy Coding! 🚀
-<<<<<<< HEAD
->>>>>>> 0260763 (Updated README)
-=======
->>>>>>> 9fd66e35e779d68ac24fa6bc6b51baa1aa25a709
